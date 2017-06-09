@@ -1,0 +1,9 @@
+SERVER_NAME,SOFT_TYPE,SOFT_NAME,VERSION
+server1,OS,Ubuntu,14.1
+server2,JRE,JDK,1.6.46
+server3,OS,Red Hat,9
+server4,DB,MySQL,4.3
+server5,OS,Ubuntu,16.2 
+server6,JRE,JDK,1.6.10 
+server7,OS,Red Hat,10
+server8,DB,MySQL,4.1
