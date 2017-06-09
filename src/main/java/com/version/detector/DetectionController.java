@@ -57,5 +57,47 @@ public class DetectionController {
 		return  new ServerList(serverList);
 
 	}
+	
+	
+	
+	
+	@RequestMapping("/json")
+	@ResponseBody
+	public String renderInJsonFormat()  {
+		List<Server> serverList = new ArrayList<Server>();
+		// ab muzhe yaha construcor level injection karana hai toh jkaiase hoga
+		// if i dont have setters and getters in pojo
+		File file = new File("server.txt");
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			bufferedReader.readLine();
+			while (bufferedReader.readLine()!=null){
+				String line = bufferedReader.readLine();
+				System.out.println(line);
+				StringTokenizer stringTokenizer = new StringTokenizer(line, ",");
+				
+					server.setServerName(stringTokenizer.nextToken());
+					server.setSoftType(stringTokenizer.nextToken());
+					server.setSoftName(stringTokenizer.nextToken());					
+					server.setVersion(stringTokenizer.nextToken());
+					
+					serverList.add(server);
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 String json = new Gson().toJson(serverList);
+		return  json;
+
+	}
+	
+	
 
 }
